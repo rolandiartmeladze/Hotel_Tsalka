@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import styled from 'styled-components';
+import Header from './components/Header';
+import Home from './components/Home';
+import Container from './components/Container';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
-function App() {
+const Cont = styled.div`
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+`;
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Cont>
+      <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/container" element={<Container />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+        <Footer />
+      </Cont>
+    </Router>
   );
-}
+};
 
 export default App;
